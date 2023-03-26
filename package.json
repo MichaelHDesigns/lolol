@@ -1,5 +1,5 @@
 {
-  "name": "HTH_Trade",
+  "name": "HTH Trade",
   "version": "1.0.0",
   "description": "A simple crypto exchange for HTH and wHTH",
   "main": "server.js",
@@ -9,15 +9,15 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "@dashevo/dashcore-lib": "https://github.com/MichaelHDesigns/umbrucore-lib.git",
-    "@truffle/hdwallet-provider": "^1.4.3",
-    "body-parser": "^1.19.0",
+    "@dashevo/dashcore-lib":"https://github.com/MichaelHDesigns/umbrucore-lib.git",
+    "@truffle/hdwallet-provider": "^2.1.9",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "ethers": "^5.5.0",
-    "express": "^4.17.1",
-    "react": "^17.0.2",
+    "dotenv": "^16.0.3",
+    "ethers": "^6.2.2",
+    "express": "^4.18.2",
+    "react": "^18.2.0",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3"
+    "react-scripts": "5.0.1"
   }
 }
