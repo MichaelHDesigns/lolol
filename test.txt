@@ -1,0 +1,52 @@
+import React, { useState, useEffect } from 'react';
+import { ethers } from 'ethers';
+import NFTContract from './contracts/NFTContract.json';
+
+const NFTMarketplace = () => {
+  const [nfts, setNFTs] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchNFTs = async () => {
+      setLoading(true);
+      try {
+        const provider = new ethers.providers.JsonRpcProvider(process.env.REACT_APP_RPC_URL);
+        const contract = new ethers.Contract(process.env.REACT_APP_CONTRACT_ADDRESS, NFTContract.abi, provider);
+        const nftCount = await contract.getTotalNFTs();
+        const nfts = [];
+        for (let i = 0; i < nftCount; i++) {
+          const nft = await contract.getNFT(i);
+          nfts.push(nft);
+        }
+        setNFTs(nfts);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+    fetchNFTs();
+  }, []);
+
+  if (loading) return <div>Loading NFTs...</div>;
+  if (error) return <div>{error}</div>;
+
+  return (
+    <div>
+      <h1>NFT Marketplace</h1>
+      <ul>
+        {nfts.map((nft) => (
+          <li key={nft.id}>
+            <img src={nft.image} alt={nft.name} />
+            <div>{nft.name}</div>
+            <div>{nft.price} ETH</div>
+            <button>Buy</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default NFTMarketplace;
