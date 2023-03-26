@@ -1,5 +1,5 @@
 {
-  "name": "HTH Trade",
+  "name": "HTH_Trade",
   "version": "1.0.0",
   "description": "A simple crypto exchange for HTH and wHTH",
   "main": "server.js",
